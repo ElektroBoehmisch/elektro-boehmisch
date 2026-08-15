@@ -307,35 +307,72 @@
             </div>
         </div>
     </section>
-    <!-- NOTDIENST & EXPRESS-HILFE BANNER -->
-<section class="py-8 bg-amber-500/10 border-y border-amber-500/30">
+  <!-- NOTDIENST & EXPRESS-HILFE BANNER -->
+<section class="py-12 bg-slate-100 border-y border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="bg-gradient-to-r from-amber-500 to-amber-600 rounded-2xl p-6 sm:p-8 text-slate-900 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl">
             
-            <!-- Textbereich mit Icon -->
-            <div class="flex items-start sm:items-center gap-4">
-                <div class="p-3 bg-slate-900 text-amber-400 rounded-xl shadow-md shrink-0">
-                    <i data-lucide="siren" class="w-8 h-8 animate-pulse"></i>
-                </div>
-                <div>
-                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-slate-900/10 font-bold text-xs uppercase tracking-wider mb-1">
-                        Dringender Notfall?
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Links: Erklärung & Bedingungen -->
+                <div class="lg:col-span-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold uppercase tracking-wider mb-4">
+                        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                        <span>Nur für echte Notfälle</span>
                     </div>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-                        Stromausfall oder technische Störung?
+                    
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+                        Dringender Notfall & Gefahr im Verzug?
                     </h3>
-                    <p class="text-slate-900/80 font-medium text-sm sm:text-base mt-1">
-                        Wir sind bei dringenden Notfällen schnell für Sie vor Ort. Rufen Sie uns direkt an!
+                    
+                    <p class="text-slate-600 text-sm sm:text-base mb-6 leading-relaxed">
+                        Unser Express-Notdienst ist ausschließlich für akute Gefahrensituationen und komplette Stromausfälle vorgesehen. Bitte nutzen Sie diese Nummer nur, wenn sofortiges Handeln erforderlich ist.
                     </p>
-                </div>
-            </div>
 
-            <!-- Direkter Anruf-Button -->
-            <div class="w-full md:w-auto shrink-0">
-                <a href="tel:+491701234567" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-base transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-slate-900/20">
-                    <i data-lucide="phone-call" class="w-5 h-5 text-amber-400"></i>
-                    <span>Notdienst Rufen</span>
-                </a>
+                    <!-- Kriterien-Raster -->
+                    <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm font-medium">
+                        <div class="bg-red-50/60 border border-red-100 rounded-xl p-3.5 flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span class="text-slate-800">Kompletter Stromausfall im gesamten Objekt</span>
+                        </div>
+                        <div class="bg-red-50/60 border border-red-100 rounded-xl p-3.5 flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span class="text-slate-800">Schmorgeruch, Funkenflug oder Brandgefahr</span>
+                        </div>
+                        <div class="bg-red-50/60 border border-red-100 rounded-xl p-3.5 flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span class="text-slate-800">Wasserschaden mit Kontakt zu Elektroanlagen</span>
+                        </div>
+                        <div class="bg-red-50/60 border border-red-100 rounded-xl p-3.5 flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span class="text-slate-800">Sicherungen fliegen sofort wieder raus</span>
+                        </div>
+                    </div>
+
+                    <!-- Hinweis bezüglich regulärer Anfragen & Aufschlag -->
+                    <div class="mt-4 flex items-center gap-2 text-xs text-slate-500">
+                        <i data-lucide="info" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                        <span>Für normale Termine, Altbausanierung oder Wallbox-Beratung nutzen Sie bitte das <a href="#kontakt" class="text-blue-600 underline font-semibold">Kontaktformular</a>. Ausserhalb der Geschäftszeiten fallen Notdienstzuschläge an.</span>
+                    </div>
+                </div>
+
+                <!-- Rechts: Telefon-Box für Notfälle -->
+                <div class="lg:col-span-4 flex flex-col justify-center">
+                    <div class="bg-red-600 text-white p-6 sm:p-8 rounded-2xl text-center shadow-lg shadow-red-600/20 relative overflow-hidden">
+                        <div class="text-xs font-bold uppercase tracking-widest text-red-200 mb-1">24/7 Notfall-Hotline</div>
+                        <div class="text-2xl font-extrabold mb-4">Elektro-Notdienst</div>
+                        
+                        <a href="tel:+491701234567" class="w-full py-3.5 px-4 rounded-xl bg-white hover:bg-slate-100 text-red-700 font-extrabold text-base transition-all flex items-center justify-center gap-2 shadow-md mb-3">
+                            <i data-lucide="phone-call" class="w-5 h-5 text-red-600"></i>
+                            <span>Notdienst Anrufen</span>
+                        </a>
+
+                        <p class="text-[11px] text-red-100 font-medium">
+                            Nur bei akuten Notfällen wählen.
+                        </p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
