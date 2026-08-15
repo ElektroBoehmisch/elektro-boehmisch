@@ -1,337 +1,290 @@
 <!DOCTYPE html>
-<html lang="de" class="scroll-smooth dark">
+<html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elektro Böhmisch – High-End Elektrotechnik & Smart Automation</title>
+    <title>Elektro Böhmisch – Elektrmeisterbetrieb & Gebäudetechnik</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Canvas Particles Library -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#2a5275',
+                            darkblue: '#1b3852',
+                            accent: '#3b82f6',
+                            silver: '#94a3b8',
+                            dark: '#0a0f1d',
+                            card: '#111827'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&display=swap');
-        
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #030712;
+            background-color: #070a12;
             color: #f3f4f6;
-            overflow-x: hidden;
         }
-
-        /* Interaktiver Cursor Glow */
-        #cursor-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(59, 130, 246, 0.05) 40%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            transition: transform 0.1s ease-out;
+        .hero-glow {
+            background: radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
         }
-
-        /* Glassmorphism Ultra */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.55);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+        .card-border {
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
-
-        .glass-panel:hover {
-            border-color: rgba(6, 182, 212, 0.5);
-            box-shadow: 0 0 35px rgba(6, 182, 212, 0.2);
-        }
-
-        /* Text Neon Gradient */
-        .neon-text {
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Animated Pulse Line */
-        @keyframes electricPulse {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .electric-line::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #06b6d4, transparent);
-            animation: electricPulse 3s infinite linear;
-        }
-
-        /* Floating Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(1deg); }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        .card-border:hover {
+            border-color: rgba(59, 130, 246, 0.4);
         }
     </style>
 </head>
-<body class="relative">
+<body class="antialiased selection:bg-blue-600 selection:text-white">
 
-    <!-- Custom Cursor Glow -->
-    <div id="cursor-glow"></div>
-
-    <!-- Interactive Particle Background -->
-    <div id="tsparticles" class="fixed inset-0 pointer-events-none z-0 opacity-40"></div>
-
-    <!-- Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-300">
-        <div class="max-w-7xl mx-auto glass-panel rounded-2xl px-6 py-3 flex justify-between items-center relative overflow-hidden">
-            <div class="electric-line"></div>
-            <a href="#" class="flex items-center gap-3 group">
-                <img src="logo.png" alt="Elektro Böhmisch Meisterbetrieb" class="h-12 w-auto object-contain">
-            </a>
+    <!-- NAVIGATION / HEADER -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#070a12]/90 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
             
-            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
-                <a href="#services" class="text-slate-300 hover:text-cyan-400 transition-colors">Leistungen</a>
-                <a href="#tech" class="text-slate-300 hover:text-cyan-400 transition-colors">Technologie</a>
-                <a href="#stats" class="text-slate-300 hover:text-cyan-400 transition-colors">Zahlen</a>
-                <a href="#contact" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] hover:scale-105 transition-all">
-                    Projekt Starten
+            <!-- Dein Firmenlogo -->
+            <a href="#" class="flex items-center gap-3">
+                <img src="logo.png" alt="Elektro Böhmisch Meisterbetrieb Logo" class="h-12 sm:h-14 w-auto object-contain">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                <a href="#leistungen" class="hover:text-blue-400 transition-colors">Leistungen</a>
+                <a href="#ueber-uns" class="hover:text-blue-400 transition-colors">Über Uns</a>
+                <a href="#vorteile" class="hover:text-blue-400 transition-colors">Vorteile</a>
+                <a href="#kontakt" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold transition-all shadow-lg shadow-blue-900/30">
+                    Kontakt Aufnehmen
                 </a>
             </nav>
+
+            <!-- Mobil-Menü Button -->
+            <button class="md:hidden text-slate-300 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Mobil Navigation Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0a0f1d] border-b border-slate-800 px-6 py-4 space-y-3">
+            <a href="#leistungen" class="block text-slate-300 hover:text-blue-400">Leistungen</a>
+            <a href="#ueber-uns" class="block text-slate-300 hover:text-blue-400">Über Uns</a>
+            <a href="#vorteile" class="block text-slate-300 hover:text-blue-400">Vorteile</a>
+            <a href="#kontakt" class="block text-center py-2.5 bg-blue-600 text-white font-bold rounded-lg">Kontakt Aufnehmen</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative pt-44 pb-32 px-6 max-w-7xl mx-auto min-h-screen flex items-center z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
-            <div class="lg:col-span-7 space-y-8">
-                
-                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border border-cyan-500/30 text-cyan-300 text-xs font-black uppercase tracking-widest">
-                    <span class="relative flex h-3 w-3">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
-                    </span>
-                    Zertifizierter Elektromeisterbetrieb
-                </div>
+    <!-- HERO SECTION -->
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 hero-glow overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/60 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-6">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                <span>Zertifizierter Elektromeisterbetrieb</span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                Moderne Elektrotechnik & <br class="hidden sm:inline">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-slate-400">
+                    Zuverlässiger Meister-Service
+                </span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-400 mb-8">
+                Von der klassischen Elektroinstallation über Smart Home Systeme bis hin zur modernen PV-Anlage – Elektro Böhmisch ist Ihr starker Partner für sichere und zukunftssichere Technik.
+            </p>
 
-                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none uppercase">
-                    Energie in <br />
-                    <span class="neon-text">Perfektion.</span>
-                </h1>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#kontakt" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-base shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2">
+                    <span>Jetzt Projekt Anfragen</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#leistungen" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 font-bold text-base border border-slate-700 transition-all text-center">
+                    Unsere Leistungen
+                </a>
+            </div>
+        </div>
+    </section>
 
-                <p class="text-slate-400 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
-                    Wir verknüpfen klassisches Handwerk mit intelligenter Gebäudeautomation, erneuerbaren Energien und modernsten Sicherheitsstandards.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-5 pt-4">
-                    <a href="#contact" class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-slate-950 font-black tracking-wide text-center hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] hover:scale-105 transition-all flex items-center justify-center gap-3">
-                        Kostenlose Beratung <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#services" class="px-8 py-4 rounded-xl glass-panel text-slate-200 font-bold text-center hover:bg-slate-800/80 transition-all">
-                        Leistungen ansehen
-                    </a>
-                </div>
+    <!-- LEISTUNGEN SECTION -->
+    <section id="leistungen" class="py-20 bg-[#0a0f1d]/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-blue-400 font-bold uppercase tracking-wider text-sm mb-2">Unsere Fachgebiete</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Leistungen vom Meister</p>
             </div>
 
-            <!-- Floating Tech Card -->
-            <div class="lg:col-span-5 animate-float">
-                <div class="p-8 rounded-3xl glass-panel relative overflow-hidden group">
-                    <div class="absolute -right-12 -top-12 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl group-hover:bg-cyan-500/30 transition-all"></div>
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="p-4 bg-cyan-500/10 rounded-2xl text-cyan-400 border border-cyan-500/20">
-                            <i data-lucide="activity" class="w-8 h-8"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-extrabold text-xl text-white">Live Performance</h3>
-                            <p class="text-xs text-slate-400">Präzision & Effizienz auf 100%</p>
-                        </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Leistung 1 -->
+                <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Elektroinstallation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Neu- und Altbausanierung, Zähleranlagen, Verteilungsbau sowie fachgerechte Montagen nach höchsten Sicherheitsstandards.
+                    </p>
+                </div>
 
-                    <div class="space-y-4">
-                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 flex justify-between items-center">
-                            <span class="text-slate-300 text-sm font-semibold">Smart Home Integration</span>
-                            <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-lg text-xs font-bold">KNX / Loxone</span>
-                        </div>
-                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 flex justify-between items-center">
-                            <span class="text-slate-300 text-sm font-semibold">Photovoltaik & Storage</span>
-                            <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 rounded-lg text-xs font-bold">Autarkie</span>
-                        </div>
-                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 flex justify-between items-center">
-                            <span class="text-slate-300 text-sm font-semibold">DGUV V3 Prüfungen</span>
-                            <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-lg text-xs font-bold">Zertifiziert</span>
-                        </div>
+                <!-- Leistung 2 -->
+                <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <i data-lucide="home" class="w-6 h-6"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Smart Home & Automation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Intelligente Gebäudesteuerung für Licht, Heizung und Beschattung. Komfortabel, energiesparend und per App steuerbar.
+                    </p>
+                </div>
+
+                <!-- Leistung 3 -->
+                <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <i data-lucide="sun" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">PV-Anlagen & Speicher</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Erzeugung von eigenem Strom mit Photovoltaik und Batteriespeichern. Nachhaltig, unabhängig und zukunftssicher.
+                    </p>
+                </div>
+
+                <!-- Leistung 4 -->
+                <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <i data-lucide="car" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">E-Mobilität & Wallboxen</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Professionelle Installation von Ladestationen für Ihr Elektrofahrzeug – privat oder für Gewerbebetriebe.
+                    </p>
+                </div>
+
+                <!-- Leistung 5 -->
+                <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">E-Check & Sicherheit</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Prüfung Ihrer elektrischen Anlagen und Geräte nach DGUV V3 und DIN VDE Normen zum Schutz vor Gefahren und Ausfällen.
+                    </p>
+                </div>
+
+                <!-- Leistung 6 -->
+                <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <i data-lucide="wrench" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Wartung & Störungsdienst</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Schnelle Hilfe bei Stromausfällen, Defekten oder dringenden Reparaturen. Wir halten Ihre Technik am Laufen.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Counter Section -->
-    <section id="stats" class="py-16 px-6 max-w-7xl mx-auto z-10 relative">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="p-6 rounded-2xl glass-panel text-center">
-                <span class="text-4xl lg:text-5xl font-black neon-text counter" data-target="100">0</span><span class="text-4xl lg:text-5xl font-black neon-text">%</span>
-                <p class="text-xs sm:text-sm font-bold text-slate-400 mt-2 uppercase tracking-wider">Präzision</p>
-            </div>
-            <div class="p-6 rounded-2xl glass-panel text-center">
-                <span class="text-4xl lg:text-5xl font-black text-cyan-400 counter" data-target="15">0</span><span class="text-4xl lg:text-5xl font-black text-cyan-400">+</span>
-                <p class="text-xs sm:text-sm font-bold text-slate-400 mt-2 uppercase tracking-wider">Jahre Erfahrung</p>
-            </div>
-            <div class="p-6 rounded-2xl glass-panel text-center">
-                <span class="text-4xl lg:text-5xl font-black text-indigo-400 counter" data-target="500">0</span><span class="text-4xl lg:text-5xl font-black text-indigo-400">+</span>
-                <p class="text-xs sm:text-sm font-bold text-slate-400 mt-2 uppercase tracking-wider">Projekte</p>
-            </div>
-            <div class="p-6 rounded-2xl glass-panel text-center">
-                <span class="text-4xl lg:text-5xl font-black text-emerald-400">24/7</span>
-                <p class="text-xs sm:text-sm font-bold text-slate-400 mt-2 uppercase tracking-wider">Zuverlässigkeit</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Grid -->
-    <section id="services" class="py-32 px-6 max-w-7xl mx-auto z-10 relative">
-        <div class="text-center mb-20">
-            <h2 class="text-4xl sm:text-6xl font-black uppercase mb-4">Zukunftssichere <span class="neon-text">Lösungen</span></h2>
-            <p class="text-slate-400 max-w-2xl mx-auto text-lg">Maßgeschneiderte Hochleistungs-Elektrotechnik für Ihr Zuhause und Gewerbe.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-8 rounded-3xl glass-panel group hover:-translate-y-2 transition-all">
-                <div class="p-5 bg-cyan-500/10 rounded-2xl text-cyan-400 w-fit mb-8 border border-cyan-500/20 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all">
-                    <i data-lucide="cpu" class="w-10 h-10"></i>
-                </div>
-                <h3 class="text-2xl font-extrabold mb-4 text-white">Smart Home & KNX</h3>
-                <p class="text-slate-400 leading-relaxed text-sm mb-6">Vollautomatisierte Steuerung von Beleuchtung, Klima, Sicherheit und Beschattung. Überall per Smartphone erreichbar.</p>
-                <div class="flex items-center gap-2 text-cyan-400 font-bold text-sm">Projekte anfragen <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
-            </div>
-
-            <div class="p-8 rounded-3xl glass-panel group hover:-translate-y-2 transition-all">
-                <div class="p-5 bg-yellow-500/10 rounded-2xl text-yellow-400 w-fit mb-8 border border-yellow-500/20 group-hover:scale-110 group-hover:bg-yellow-500 group-hover:text-slate-950 transition-all">
-                    <i data-lucide="sun" class="w-10 h-10"></i>
-                </div>
-                <h3 class="text-2xl font-extrabold mb-4 text-white">Photovoltaik & Storage</h3>
-                <p class="text-slate-400 leading-relaxed text-sm mb-6">Werden Sie energieautark. Schlüsselfertige Solaranlagen inklusive modernster Akkuspeicher und E-Wallboxen.</p>
-                <div class="flex items-center gap-2 text-yellow-400 font-bold text-sm">Projekte anfragen <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
-            </div>
-
-            <div class="p-8 rounded-3xl glass-panel group hover:-translate-y-2 transition-all">
-                <div class="p-5 bg-indigo-500/10 rounded-2xl text-indigo-400 w-fit mb-8 border border-indigo-500/20 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-slate-950 transition-all">
-                    <i data-lucide="shield-check" class="w-10 h-10"></i>
-                </div>
-                <h3 class="text-2xl font-extrabold mb-4 text-white">Elektroinstallation</h3>
-                <p class="text-slate-400 leading-relaxed text-sm mb-6">Präzise Neu- und Altbauinstallationen, Verteilungsbau, Netzwerktrechnik und zertifizierte Messprüfungen.</p>
-                <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm">Projekte anfragen <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Contact Form -->
-    <section id="contact" class="py-32 px-6 max-w-7xl mx-auto z-10 relative">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-            <div class="lg:col-span-5 flex flex-col justify-between">
+    <!-- ÜBER UNS SECTION -->
+    <section id="ueber-uns" class="py-20 border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-4xl sm:text-6xl font-black uppercase leading-tight mb-6">Lass uns <br /><span class="neon-text">Starten.</span></h2>
-                    <p class="text-slate-400 text-lg leading-relaxed mb-8">Haben Sie Fragen oder ein neues Projekt? Schreiben Sie uns kurz – wir antworten garantiert innerhalb von 24 Stunden.</p>
+                    <h2 class="text-blue-400 font-bold uppercase tracking-wider text-sm mb-2">Elektro Böhmisch</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Qualität und Meisterhandwerk seit Tag 1</h3>
+                    <p class="text-slate-300 leading-relaxed mb-6">
+                        Als eingetragener Elektromeisterbetrieb legen wir höchsten Wert auf Präzision, Sicherheit und individuelle Beratung. Jedes Projekt wird mit der gleichen Sorgfalt umgesetzt – egal ob kleine Reparatur oder umfassendes Großprojekt.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-slate-200">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-400"></i>
+                            <span>Persönliche Beratung direkt durch den Meister</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-200">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-400"></i>
+                            <span>Höchste Qualitäts- und Sicherheitsstandards</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-200">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-400"></i>
+                            <span>Faire und transparente Preisgestaltung</span>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="space-y-4">
-                    <div class="p-6 rounded-2xl glass-panel flex items-center gap-5">
-                        <div class="p-4 bg-cyan-500/10 rounded-xl text-cyan-400 border border-cyan-500/20"><i data-lucide="phone" class="w-6 h-6"></i></div>
-                        <div>
-                            <p class="text-xs text-slate-500 uppercase font-black">Telefon</p>
-                            <p class="text-xl font-bold text-white">+49 (0) 123 456789</p>
-                        </div>
-                    </div>
-                    <div class="p-6 rounded-2xl glass-panel flex items-center gap-5">
-                        <div class="p-4 bg-cyan-500/10 rounded-xl text-cyan-400 border border-cyan-500/20"><i data-lucide="mail" class="w-6 h-6"></i></div>
-                        <div>
-                            <p class="text-xs text-slate-500 uppercase font-black">E-Mail</p>
-                            <p class="text-xl font-bold text-white">info@elektro-boehmisch.de</p>
-                        </div>
-                    </div>
+                <div class="bg-[#111827] p-8 rounded-2xl card-border text-center">
+                    <img src="logo.png" alt="Elektro Böhmisch Logo" class="max-h-32 mx-auto mb-6 object-contain">
+                    <h4 class="text-xl font-bold text-white mb-2">Elektro Böhmisch</h4>
+                    <p class="text-slate-400 text-sm">Ihr Meisterbetrieb für moderne Elektrotechnik</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="lg:col-span-7">
-                <form action="https://api.web3forms.com/submit" method="POST" class="p-8 sm:p-12 rounded-3xl glass-panel space-y-6 relative overflow-hidden">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-black uppercase text-slate-400 mb-2 tracking-wider">Ihr Name</label>
-                            <input type="text" name="name" required class="w-full px-5 py-4 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-none transition-all" placeholder="Max Mustermann">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-black uppercase text-slate-400 mb-2 tracking-wider">E-Mail Adresse</label>
-                            <input type="email" name="email" required class="w-full px-5 py-4 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-none transition-all" placeholder="max@beispiel.de">
-                        </div>
+    <!-- KONTAKT SECTION -->
+    <section id="kontakt" class="py-20 bg-[#0a0f1d]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-blue-400 font-bold uppercase tracking-wider text-sm mb-2">Kontakt</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Sprechen Sie uns an</p>
+                <p class="text-slate-400 mt-2">Haben Sie Fragen oder planen Sie ein Projekt? Schreiben Sie uns einfach!</p>
+            </div>
+
+            <form class="space-y-6 bg-[#111827] p-8 rounded-2xl card-border">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Name</label>
+                        <input type="text" placeholder="Ihr Vor- & Nachname" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-black uppercase text-slate-400 mb-2 tracking-wider">Nachricht</label>
-                        <textarea name="message" rows="5" required class="w-full px-5 py-4 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-none transition-all" placeholder="Wie können wir Ihnen helfen?"></textarea>
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">E-Mail Adresse</label>
+                        <input type="email" placeholder="ihre.email@beispiel.de" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
                     </div>
-                    <button type="submit" class="w-full py-5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 font-black text-slate-950 uppercase tracking-wider flex items-center justify-center gap-3 hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] hover:scale-[1.01] transition-all">
-                        <i data-lucide="send" class="w-5 h-5"></i> Nachricht jetzt Absenden
-                    </button>
-                </form>
-            </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">Betreff</label>
+                    <input type="text" placeholder="z. B. Anfrage Elektroinstallation" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">Nachricht</label>
+                    <textarea rows="5" placeholder="Beschreiben Sie kurz Ihr Anliegen..." class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"></textarea>
+                </div>
+                <button type="button" class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all shadow-lg shadow-blue-600/30">
+                    Nachricht Absenden
+                </button>
+            </form>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t border-slate-900/80 text-center text-slate-500 text-sm relative z-10">
-        <p>&copy; Elektro Böhmisch. Alle Rechte vorbehalten. Designed with High-End Precision.</p>
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 py-12 bg-[#070a12]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <img src="logo.png" alt="Elektro Böhmisch" class="h-10 mx-auto md:mx-0 mb-2 object-contain">
+                <p class="text-slate-500 text-xs">© 2026 Elektro Böhmisch – Meisterbetrieb. Alle Rechte vorbehalten.</p>
+            </div>
+            <div class="flex gap-6 text-sm text-slate-400">
+                <a href="#" class="hover:text-white">Impressum</a>
+                <a href="#" class="hover:text-white">Datenschutz</a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Interactive Scripts -->
+    <!-- Lucide Icons Initialisierung -->
     <script>
-        // Init Lucide Icons
         lucide.createIcons();
-
-        // Custom Mouse Glow Effect
-        const glow = document.getElementById('cursor-glow');
-        window.addEventListener('mousemove', (e) => {
-            glow.style.transform = `translate(${e.clientX - 300}px, ${e.clientY - 300}px)`;
-        });
-
-        // Interactive Particle Canvas Background
-        tsParticles.load("tsparticles", {
-            fpsLimit: 60,
-            particles: {
-                color: { value: "#06b6d4" },
-                links: { color: "#3b82f6", distance: 150, enable: true, opacity: 0.2, width: 1 },
-                move: { enable: true, speed: 1 },
-                number: { density: { enable: true, area: 800 }, value: 50 },
-                opacity: { value: 0.3 },
-                size: { value: { min: 1, max: 3 } },
-            },
-        });
-
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / 100;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 25);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCount();
-        });
     </script>
 </body>
 </html>
