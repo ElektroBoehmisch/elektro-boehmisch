@@ -60,7 +60,7 @@
     <header class="fixed top-0 left-0 w-full z-50 bg-[#070a12]/90 backdrop-blur-md border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
             
-            <!-- Dein Firmenlogo -->
+            <!-- Firmenlogo -->
             <a href="#" class="flex items-center gap-3">
                 <img src="logo.png" alt="Elektro Böhmisch Meisterbetrieb Logo" class="h-12 sm:h-14 w-auto object-contain">
             </a>
@@ -69,24 +69,22 @@
             <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
                 <a href="#leistungen" class="hover:text-blue-400 transition-colors">Leistungen</a>
                 <a href="#ueber-uns" class="hover:text-blue-400 transition-colors">Über Uns</a>
-                <a href="#vorteile" class="hover:text-blue-400 transition-colors">Vorteile</a>
                 <a href="#kontakt" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold transition-all shadow-lg shadow-blue-900/30">
                     Kontakt Aufnehmen
                 </a>
             </nav>
 
             <!-- Mobil-Menü Button -->
-            <button class="md:hidden text-slate-300 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+            <button class="md:hidden text-slate-300 hover:text-white p-2" onclick="toggleMenu()" aria-label="Menü öffnen">
                 <i data-lucide="menu" class="w-7 h-7"></i>
             </button>
         </div>
 
         <!-- Mobil Navigation Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#0a0f1d] border-b border-slate-800 px-6 py-4 space-y-3">
-            <a href="#leistungen" class="block text-slate-300 hover:text-blue-400">Leistungen</a>
-            <a href="#ueber-uns" class="block text-slate-300 hover:text-blue-400">Über Uns</a>
-            <a href="#vorteile" class="block text-slate-300 hover:text-blue-400">Vorteile</a>
-            <a href="#kontakt" class="block text-center py-2.5 bg-blue-600 text-white font-bold rounded-lg">Kontakt Aufnehmen</a>
+            <a href="#leistungen" onclick="toggleMenu()" class="block text-slate-300 hover:text-blue-400 py-1">Leistungen</a>
+            <a href="#ueber-uns" onclick="toggleMenu()" class="block text-slate-300 hover:text-blue-400 py-1">Über Uns</a>
+            <a href="#kontakt" onclick="toggleMenu()" class="block text-center py-2.5 bg-blue-600 text-white font-bold rounded-lg mt-2">Kontakt Aufnehmen</a>
         </div>
     </header>
 
@@ -130,7 +128,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Leistung 1 -->
                 <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
                     <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
                         <i data-lucide="zap" class="w-6 h-6"></i>
@@ -141,7 +138,6 @@
                     </p>
                 </div>
 
-                <!-- Leistung 2 -->
                 <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
                     <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
                         <i data-lucide="home" class="w-6 h-6"></i>
@@ -152,7 +148,6 @@
                     </p>
                 </div>
 
-                <!-- Leistung 3 -->
                 <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
                     <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
                         <i data-lucide="sun" class="w-6 h-6"></i>
@@ -163,7 +158,6 @@
                     </p>
                 </div>
 
-                <!-- Leistung 4 -->
                 <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
                     <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
                         <i data-lucide="car" class="w-6 h-6"></i>
@@ -174,7 +168,6 @@
                     </p>
                 </div>
 
-                <!-- Leistung 5 -->
                 <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
                     <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
                         <i data-lucide="shield-alert" class="w-6 h-6"></i>
@@ -185,7 +178,6 @@
                     </p>
                 </div>
 
-                <!-- Leistung 6 -->
                 <div class="bg-[#111827] p-8 rounded-2xl card-border transition-all group">
                     <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
                         <i data-lucide="wrench" class="w-6 h-6"></i>
@@ -242,26 +234,28 @@
                 <p class="text-slate-400 mt-2">Haben Sie Fragen oder planen Sie ein Projekt? Schreiben Sie uns einfach!</p>
             </div>
 
-            <form class="space-y-6 bg-[#111827] p-8 rounded-2xl card-border">
+            <!-- Formular sendet direkt eine E-Mail an deine Adresse -->
+            <form action="mailto:deine-email@beispiel.de" method="post" enctype="text/plain" class="space-y-6 bg-[#111827] p-8 rounded-2xl card-border">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-semibold text-slate-300 mb-2">Name</label>
-                        <input type="text" placeholder="Ihr Vor- & Nachname" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+                        <input type="text" name="Name" required placeholder="Ihr Vor- & Nachname" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-300 mb-2">E-Mail Adresse</label>
-                        <input type="email" placeholder="ihre.email@beispiel.de" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+                        <input type="email" name="Email" required placeholder="ihre.email@beispiel.de" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Betreff</label>
-                    <input type="text" placeholder="z. B. Anfrage Elektroinstallation" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+                    <input type="text" name="Betreff" placeholder="z. B. Anfrage Elektroinstallation" class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Nachricht</label>
-                    <textarea rows="5" placeholder="Beschreiben Sie kurz Ihr Anliegen..." class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"></textarea>
+                    <textarea name="Nachricht" rows="5" required placeholder="Beschreiben Sie kurz Ihr Anliegen..." class="w-full bg-[#070a12] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"></textarea>
                 </div>
-                <button type="button" class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all shadow-lg shadow-blue-600/30">
+                <!-- type="submit" sorgt dafür, dass die Nachricht beim Klick abgesendet wird -->
+                <button type="submit" class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all shadow-lg shadow-blue-600/30">
                     Nachricht Absenden
                 </button>
             </form>
@@ -276,17 +270,19 @@
                 <p class="text-slate-500 text-xs">© 2026 Elektro Böhmisch – Meisterbetrieb. Alle Rechte vorbehalten.</p>
             </div>
             <div class="flex gap-6 text-sm text-slate-400">
-                <a href="#" class="hover:text-white">Impressum</a>
-                <a href="#" class="hover:text-white">Datenschutz</a>
+                <a href="impressum.html" class="hover:text-white">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-white">Datenschutz</a>
             </div>
         </div>
     </footer>
-    <a href="#" class="hover:text-white">Impressum</a>
-<a href="#" class="hover:text-white">Datenschutz</a>
-    <a href="impressum.html" class="hover:text-white">Impressum</a>
-<a href="datenschutz.html" class="hover:text-white">Datenschutz</a>
-    <!-- Lucide Icons Initialisierung -->
+
+    <!-- Scripts für Mobile Menu & Icons -->
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
         lucide.createIcons();
     </script>
 </body>
